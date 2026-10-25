@@ -46,4 +46,12 @@ public class DatasetLoader {
 
     public List<String> getHeaders() { return headers; }
     public int getRowCount() { return dataRows.size(); }
+    
+    public double[] getColumnData(int columnIndex) {
+        double[] columnData = new double[dataRows.size()];
+        for (int i = 0; i < dataRows.size(); i++) {
+            columnData[i] = dataRows.get(i)[columnIndex];
+        }
+        return columnData;
+    }
 }
