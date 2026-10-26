@@ -1,4 +1,4 @@
-package com.sorting.app;
+package universityofcolombo.sortingperformanceevaluator;
 
 import java.io.BufferedReader;
 import java.io.File;
