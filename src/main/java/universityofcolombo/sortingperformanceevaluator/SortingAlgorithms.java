@@ -12,6 +12,7 @@ public class SortingAlgorithms {
 
     // 1. Insertion Sort
     public static void insertionSort(double[] arr) {
+        if (arr == null || arr.length <= 1) return; // Edge case guard
         for (int i = 1; i < arr.length; i++) {
             double key = arr[i];
             int j = i - 1;
@@ -25,6 +26,7 @@ public class SortingAlgorithms {
     
     // 2. Shell Sort
     public static void shellSort(double[] arr) {
+        if (arr == null || arr.length <= 1) return; // Edge case guard
         int n = arr.length;
         for (int gap = n / 2; gap > 0; gap /= 2) {
             for (int i = gap; i < n; i++) {
@@ -40,6 +42,7 @@ public class SortingAlgorithms {
 
     // 3. Merge Sort
     public static void mergeSort(double[] arr, int l, int r) {
+        if (arr == null || arr.length <= 1) return; // Edge case guard
         if (l < r) {
             int m = l + (r - l) / 2;
             mergeSort(arr, l, m);
@@ -66,6 +69,7 @@ public class SortingAlgorithms {
     
     // 4. Quick Sort
     public static void quickSort(double[] arr, int low, int high) {
+        if (arr == null || arr.length <= 1) return; // Edge case guard
         if (low < high) {
             int pi = partition(arr, low, high);
             quickSort(arr, low, pi - 1);
@@ -88,6 +92,7 @@ public class SortingAlgorithms {
 
     // 5. Heap Sort
     public static void heapSort(double[] arr) {
+        if (arr == null || arr.length <= 1) return; // Edge case guard
         int n = arr.length;
         for (int i = n / 2 - 1; i >= 0; i--) heapify(arr, n, i);
         for (int i = n - 1; i > 0; i--) {
