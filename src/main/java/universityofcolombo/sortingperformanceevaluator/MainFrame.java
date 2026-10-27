@@ -48,6 +48,26 @@ public class MainFrame extends JFrame {
         add(topPanel, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
         add(bottomPanel, BorderLayout.SOUTH);
+        
+        uploadBtn.addActionListener(e -> {
+            JFileChooser fileChooser = new JFileChooser();
+            int option = fileChooser.showOpenDialog(this);
+            if (option == JFileChooser.APPROVE_OPTION) {
+                java.io.File file = fileChooser.getSelectedFile();
+                try {
+                    loader.loadCSV(file);
+                    columnComboBox.removeAllItems();
+                    for (String h : loader.getHeaders()) {
+                        columnComboBox.addItem(h);
+                    }
+                    statusLabel.setText(" Status: Loaded " + file.getName() + " (" + loader.getRowCount() + " rows)");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Error parsing CSV: " + ex.getMessage());
+                }
+            }
+        });
+        
+        
     }
 
     public static void main(String[] args) {
