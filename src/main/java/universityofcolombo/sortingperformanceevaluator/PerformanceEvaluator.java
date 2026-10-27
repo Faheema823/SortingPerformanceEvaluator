@@ -43,4 +43,16 @@ public class PerformanceEvaluator {
 
         return results;
     }
+    
+    public static String getBestAlgorithm(Map<String, Long> results) {
+        String best = "";
+        long minTime = Long.MAX_VALUE;
+        for (Map.Entry<String, Long> entry : results.entrySet()) {
+            if (entry.getValue() < minTime) {
+                minTime = entry.getValue();
+                best = entry.getKey();
+            }
+        }
+        return best + " (" + String.format("%.4f ms", minTime / 1_000_000.0) + ")";
+    }
 }
