@@ -67,6 +67,28 @@ public class MainFrame extends JFrame {
             }
         });
         
+        runBtn.addActionListener(e -> {
+            if (loader.getRowCount() == 0 || columnComboBox.getItemCount() == 0) {
+                JOptionPane.showMessageDialog(this, "Please upload a valid CSV dataset first!");
+                return;
+            }
+
+            int colIdx = columnComboBox.getSelectedIndex();
+            double[] data = loader.getColumnData(colIdx);
+
+            Map<String, Long> perfMap = PerformanceEvaluator.evaluateAll(data);
+            tableModel.setRowCount(0);
+
+            for (Map.Entry<String, Long> entry : perfMap.entrySet()) {
+                double ms = entry.getValue() / 1_000_000.0;
+                tableModel.addRow(new Object[]{entry.getKey(), String.format("%.4f ms", ms)});
+            }
+
+            String best = PerformanceEvaluator.getBestAlgorithm(perfMap);
+            bestAlgoLabel.setText(" Best Performing Algorithm: " + best);
+            statusLabel.setText(" Status: Evaluation completed successfully.");
+        });
+        
         
     }
 
