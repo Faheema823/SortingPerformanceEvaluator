@@ -11,10 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author rais
- */
+
 public class DatasetLoader {
     private List<String> headers = new ArrayList<>();
     private List<double[]> dataRows = new ArrayList<>();

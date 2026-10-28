@@ -11,6 +11,7 @@ package universityofcolombo.sortingperformanceevaluator;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.Map; // <-- ADDED THIS IMPORT TO FIX THE COMPILATION ERROR
 
 public class MainFrame extends JFrame {
     private DatasetLoader loader = new DatasetLoader();
@@ -88,7 +89,6 @@ public class MainFrame extends JFrame {
             bestAlgoLabel.setText(" Best Performing Algorithm: " + best);
             statusLabel.setText(" Status: Evaluation completed successfully.");
         });
-        
         
     }
 
